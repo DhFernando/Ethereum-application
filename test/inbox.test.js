@@ -31,6 +31,15 @@ describe('Inbox' , ()=>{
         _message =  await inbox.methods.message().call();
         assert.equal(_message , INIT_MSG)
     })
+
+    it('send message' , async ()=>{
+        let sendMessage = "bye bro !"
+        await inbox.methods.setMessage(sendMessage).send({from : accounts[0]})
+        const message = await inbox.methods.message().call()
+        assert.equal(message , sendMessage)
+
+
+    })
 })
 
 
